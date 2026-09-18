@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: agriintel
+      POSTGRES_PASSWORD: agriintel
+      POSTGRES_DB: agriintel
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql+psycopg2://agriintel:agriintel@db:5432/agriintel
+      JWT_SECRET: change-me-in-production
+      WEATHER_PROVIDER: mock
+      CORS_ORIGINS: http://localhost:4200
+    ports:
+      - "8000:8000"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "4200:4200"
+    command: npm start
+
+volumes:
+  pgdata:

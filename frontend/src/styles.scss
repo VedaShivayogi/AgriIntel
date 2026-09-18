@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; margin: 0; }
+body { font-family: 'Inter', system-ui, sans-serif; }
+
+.leaflet-container { border-radius: 12px; }
+
+.card {
+  @apply bg-white rounded-2xl shadow-sm border border-slate-100 p-5;
+}
+.card-title {
+  @apply text-sm font-semibold text-slate-500 uppercase tracking-wide;
+}
+.metric-value {
+  @apply text-3xl font-bold text-slate-900;
+}
+.badge-demo {
+  @apply inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full
+         bg-amber-100 text-amber-800 border border-amber-200;
+}
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-leaf-600 text-white
+         font-medium hover:bg-leaf-700 transition-colors;
+}
+.btn-secondary {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-slate-700
+         font-medium border border-slate-200 hover:bg-slate-50 transition-colors;
+}
+.input {
+  @apply w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-leaf-500
+         focus:ring-2 focus:ring-leaf-100 outline-none transition-all;
+}
+.label {
+  @apply block text-sm font-medium text-slate-700 mb-1;
+}
