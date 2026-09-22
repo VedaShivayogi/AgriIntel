@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # AgriIntel-X
 
 **Explainable Multimodal AI Platform for Soil-Aware Crop Yield, Risk and Farmer Profit Forecasting**
